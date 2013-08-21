@@ -1,0 +1,23 @@
+#!/bin/sh
+
+i=0
+
+while [ $i -lt 59 ]
+do
+  p=$(ps -e | grep Captive\ Network\ Assistant | grep -v grep | awk -F"\ " '{print $1}')
+
+  #test if no response - pid 0 is never used
+  if [ -z $p ]; then p=0 ; fi
+
+  if [ $p -ne  0 ]
+  then
+     #kill the fucking assistant
+     kill $p
+     #reconnect to network
+     ./.connect
+  fi 
+
+sleep 1
+i=`expr $i + 1`
+
+done

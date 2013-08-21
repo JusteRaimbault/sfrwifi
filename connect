@@ -1,0 +1,16 @@
+#!/bin/sh
+#connection procedure
+
+#random request to get challenge number
+
+c=$(curl "www.google.com"  | grep "<LoginURL>" | awk -F"&" '{print $4}' | awk -F"=" '{print $2}' | awk -F"<" '{print $1}')
+
+echo "challenge number: " $c
+
+#authentification through post, get connection url
+url=$(./.postlogin $c | grep "window.location"  | awk -F"\ " '{print $3}')
+
+echo $url
+
+#get connection
+eval "curl "$url

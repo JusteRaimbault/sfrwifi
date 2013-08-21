@@ -1,0 +1,1 @@
+curl --data "challenge="$1"&accessType=neuf&lang=fr&mode=4&channel=0&uamip=IP_OF_UAM&uamport=PORT_OF_UAMI&mac=YOUR_MAC|YOUR_NSID&username=YOUR_USERNAME&password=YOUR_PASSWORD" https://hotspot.wifi.sfr.fr/nb4_crypt.php
